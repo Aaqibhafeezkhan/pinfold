@@ -1,0 +1,11 @@
+// Cloudflare Workers config for the pinfold.page website.
+// The site is plain static files in site/; there is no Worker script.
+// Security headers come from site/_headers.
+{
+  "name": "pinfold",
+  "compatibility_date": "2026-10-26",
+  "assets": {
+    "directory": "./site",
+    "not_found_handling": "404-page"
+  }
+}

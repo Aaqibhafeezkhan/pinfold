@@ -14,3 +14,6 @@ desktop.ini
 
 # Personal scratch files
 tmp/
+
+# Cloudflare Wrangler local state
+.wrangler/

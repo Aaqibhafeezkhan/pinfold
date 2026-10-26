@@ -15,7 +15,7 @@ Works in Chrome, Edge, Brave and other Chromium-based browsers.
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="site/assets/cards-dark.png">
-  <img src="site/assets/cards-light.png" alt="The Pinfold dashboard in cards view: saved tabs organized in nested folders, each shown as a card with a preview of the page." width="1280" height="800">
+  <img src="site/assets/cards-light.png" alt="The Pinfold dashboard in cards view: saved tabs organized in nested folders, each shown as a card with a preview of the page.">
 </picture>
 
 ---

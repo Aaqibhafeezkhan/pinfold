@@ -159,6 +159,8 @@ node --test "tests/*.test.js"
 
 `npm run package` builds the store zip in `dist/`.
 
+The website in `site/` is static and is served at [pinfold.page](https://pinfold.page) by Cloudflare (`wrangler.jsonc`). After changing `PRIVACY.md`, run `npm run build:site` to regenerate `site/privacy.html`. Maintainers deploy the site with `npx wrangler deploy`.
+
 ---
 
 ## Contributing

@@ -155,6 +155,8 @@ node test_pinfold.js
 node --test "tests/*.test.js"
 ```
 
+`npm run package` builds the store zip in `dist/`.
+
 ---
 
 ## Contributing

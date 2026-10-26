@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.1] - 2026-10-26
+
+### Added
+
+- `npm run package` builds the store upload zip in `dist/` with only the extension's runtime files.
+- Store submission kit in `store/`: listing text, permission justifications, reviewer notes, screenshots and promo images.
+
+### Changed
+
+- Shortened the extension description to fit the stores' 132-character limit.
+- The page previews setting says "your browser" instead of naming Chrome.
+
 ## [1.0.0] - 2026-10-26
 
 First public, open-source release.
@@ -41,5 +53,6 @@ First public, open-source release.
 - Strict extension Content Security Policy; incognito is not allowed.
 - Import hardening: imported items get fresh ids, URLs are limited to an allow-list of schemes, fields are type-coerced and size-limited, and ids are escaped in HTML.
 
-[Unreleased]: https://github.com/Tektrix/pinfold/compare/v1.0.0...HEAD
+[Unreleased]: https://github.com/Tektrix/pinfold/compare/v1.0.1...HEAD
+[1.0.1]: https://github.com/Tektrix/pinfold/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/Tektrix/pinfold/releases/tag/v1.0.0

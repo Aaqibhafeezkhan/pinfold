@@ -1,0 +1,238 @@
+:root {
+  --bg-pop: #18181B;
+  --bg-hover: #27272A;
+  --bg-active: #3F3F46;
+  --border-pop: #27272A;
+  --text-primary: #F4F4F5;
+  --text-secondary: #A1A1AA;
+  --text-muted: #71717A;
+  --accent-color: #818CF8;
+  --kbd-bg: #27272A;
+  --kbd-border: #3F3F46;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body[data-theme="light"] {
+  --bg-pop: #FFFFFF;
+  --bg-hover: #F4F4F5;
+  --bg-active: #E4E4E7;
+  --border-pop: #E4E4E7;
+  --text-primary: #18181B;
+  --text-secondary: #52525B;
+  --text-muted: #A1A1AA;
+  --accent-color: #4F46E5;
+  --kbd-bg: #F4F4F5;
+  --kbd-border: #E4E4E7;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+}
+
+body {
+  width: 300px;
+  font-family: var(--font-sans);
+  background-color: var(--bg-pop);
+  color: var(--text-primary);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.popup-wrap {
+  display: flex;
+  flex-direction: column;
+}
+
+.popup-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border-pop);
+}
+
+.head-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo-box svg {
+  width: 18px;
+  height: 18px;
+  display: block;
+}
+
+.head-title {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: -0.2px;
+}
+
+.head-icon-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: all 0.12s ease;
+}
+
+.head-icon-btn:hover {
+  background-color: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.head-icon-btn svg {
+  width: 15px;
+  height: 15px;
+}
+
+.head-stats-pill {
+  font-size: 11.5px;
+  color: var(--text-muted);
+  font-weight: 400;
+  margin-left: 6px;
+}
+
+.popup-actions-menu {
+  display: flex;
+  flex-direction: column;
+}
+
+.action-row-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px 14px;
+  background: transparent;
+  border: none;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: background-color 0.1s ease, color 0.1s ease;
+  outline: none;
+}
+
+.action-row-btn:hover {
+  background-color: var(--bg-hover);
+}
+
+.action-row-btn:hover .action-label {
+  color: var(--accent-color);
+}
+
+.action-row-btn:hover .action-icon {
+  color: var(--accent-color);
+}
+
+.action-row-btn:active {
+  background-color: var(--bg-active);
+}
+
+.action-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.action-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  transition: color 0.1s ease;
+}
+
+.action-icon svg {
+  width: 15px;
+  height: 15px;
+}
+
+.action-label {
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.action-triplet-row {
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+}
+
+.action-triplet-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 10px 4px;
+  background: transparent;
+  border: none;
+  font-family: inherit;
+  font-size: 11.5px;
+  font-weight: 500;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: background-color 0.1s ease, color 0.1s ease;
+  outline: none;
+  white-space: nowrap;
+}
+
+.action-triplet-btn:hover {
+  background-color: var(--bg-hover);
+}
+
+.action-triplet-btn:hover .triplet-label {
+  color: var(--accent-color);
+}
+
+.action-triplet-btn:hover .action-icon {
+  color: var(--accent-color);
+}
+
+.action-triplet-btn:active {
+  background-color: var(--bg-active);
+}
+
+.triplet-label {
+  font-size: 11.5px;
+  font-weight: 500;
+}
+
+.action-divider {
+  height: 1px;
+  background-color: var(--border-pop);
+  width: 100%;
+}
+
+.vertical-divider {
+  width: 1px;
+  background-color: var(--border-pop);
+  flex-shrink: 0;
+}
+
+.action-kbd {
+  font-size: 10px;
+  font-family: var(--font-sans);
+  color: var(--text-muted);
+  background-color: var(--kbd-bg);
+  border: 1px solid var(--kbd-border);
+  padding: 1px 5px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+

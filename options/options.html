@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pinfold Settings</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body data-theme="dark">
+  <div class="options-layout">
+    <header class="options-header">
+      <div class="header-container">
+        <div class="brand-block">
+          <div class="brand-logo" id="optionsLogo"></div>
+          <div class="brand-info">
+            <div class="brand-title-wrap">
+              <h1 class="brand-name">Pinfold Settings</h1>
+              <span class="privacy-badge">
+                <span class="pulse-dot"></span> 100% Local
+              </span>
+            </div>
+            <p class="brand-desc">Configure your tab management preferences and privacy settings.</p>
+          </div>
+        </div>
+        <button id="btnBackToDashboard" class="btn btn-secondary">
+          <span id="backToDashIcon"></span>
+          <span>Open Dashboard</span>
+        </button>
+      </div>
+    </header>
+
+    <main class="options-container">
+      <div class="settings-card">
+        <div class="card-header">
+          <h2 class="card-title">Appearance & Theme</h2>
+          <p class="card-subtitle">Choose your preferred visual theme.</p>
+        </div>
+        <div class="setting-item">
+          <div class="setting-info">
+            <span class="setting-label">Interface Theme</span>
+            <span class="setting-hint">Select a color scheme tailored for developer ergonomics.</span>
+          </div>
+          <select id="settingTheme" class="custom-select">
+            <option value="system">Follow System Preference (Default)</option>
+            <option value="dark">Dark Theme</option>
+            <option value="light">Light Theme</option>
+          </select>
+        </div>
+        <div class="setting-item">
+          <div class="setting-info">
+            <span class="setting-label">Default View Mode</span>
+            <span class="setting-hint">Choose between compact List view or Card grid with visual previews.</span>
+          </div>
+          <select id="settingViewMode" class="custom-select">
+            <option value="list">List View (Compact, with hover preview)</option>
+            <option value="cards">Cards Grid (Shows page previews if enabled)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="settings-card">
+        <div class="card-header">
+          <h2 class="card-title">Tab Restore & Collapse Behavior</h2>
+          <p class="card-subtitle">Control how tabs are saved, opened, and removed.</p>
+        </div>
+
+        <div class="setting-item">
+          <div class="setting-info">
+            <span class="setting-label">On Clicking a Saved Tab</span>
+            <span class="setting-hint">Choose whether restoring a tab removes it from your saved list.</span>
+          </div>
+          <select id="settingKeepOnRestore" class="custom-select">
+            <option value="false">Remove tab from Pinfold (Standard OneTab behavior)</option>
+            <option value="true">Keep tab in Pinfold until manually deleted</option>
+          </select>
+        </div>
+
+        <div class="setting-item">
+          <div class="setting-info">
+            <span class="setting-label">"Restore All" Target Window</span>
+            <span class="setting-hint">Where to open restored tab groups.</span>
+          </div>
+          <select id="settingRestoreWindow" class="custom-select">
+            <option value="false">Open in current window</option>
+            <option value="true">Open in a clean new window</option>
+          </select>
+        </div>
+
+        <div class="setting-item">
+          <div class="setting-info">
+            <span class="setting-label">Pinned Tabs Protection</span>
+            <span class="setting-hint">Should pinned tabs be preserved when collapsing tabs?</span>
+          </div>
+          <select id="settingPinnedTabs" class="custom-select">
+            <option value="ignore">Ignore pinned tabs (Keep them open in browser)</option>
+            <option value="include">Include pinned tabs in collapse</option>
+          </select>
+        </div>
+
+        <div class="setting-item">
+          <div class="setting-info">
+            <span class="setting-label">Auto-open Dashboard on Collapse</span>
+            <span class="setting-hint">Automatically focus or open the Pinfold Dashboard tab whenever you collapse tabs.</span>
+          </div>
+          <label class="switch-toggle">
+            <input type="checkbox" id="settingAutoOpenDash" checked>
+            <span class="slider"></span>
+          </label>
+        </div>
+
+        <div class="setting-item">
+          <div class="setting-info">
+            <span class="setting-label">Open Pinfold on New Tab</span>
+            <span class="setting-hint">Automatically open Pinfold Dashboard whenever you click the "+" button or open a new tab.</span>
+          </div>
+          <label class="switch-toggle">
+            <input type="checkbox" id="settingOpenOnNewTab">
+            <span class="slider"></span>
+          </label>
+        </div>
+
+        <div class="setting-item">
+          <div class="setting-info">
+            <span class="setting-label">Capture Page Previews</span>
+            <span class="setting-hint">Off by default. When on, collapsing briefly switches to each tab and saves a small screenshot for Cards view, kept only on this device and never exported. Chrome will ask for permission to access all sites.</span>
+          </div>
+          <label class="switch-toggle">
+            <input type="checkbox" id="settingCapturePreviews">
+            <span class="slider"></span>
+          </label>
+        </div>
+
+        <div class="setting-item">
+          <div class="setting-info">
+            <span class="setting-label">Confirm Tab Deletion</span>
+            <span class="setting-hint">Ask for confirmation before deleting an individual tab.</span>
+          </div>
+          <label class="switch-toggle">
+            <input type="checkbox" id="settingConfirmTabDelete" checked>
+            <span class="slider"></span>
+          </label>
+        </div>
+
+        <div class="setting-item">
+          <div class="setting-info">
+            <span class="setting-label">Confirm Group Deletion</span>
+            <span class="setting-hint">Ask for confirmation before deleting an unlocked tab group.</span>
+          </div>
+          <label class="switch-toggle">
+            <input type="checkbox" id="settingConfirmDelete" checked>
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
+
+
+
+      <div class="settings-card">
+        <div class="card-header">
+          <h2 class="card-title">Excluded Domains & Tools</h2>
+          <p class="card-subtitle">Tabs matching these domain names will not be closed or collapsed automatically.</p>
+        </div>
+        <div class="setting-item-block">
+          <textarea id="settingExcludedDomains" class="textarea-excluded" placeholder="youtube.com&#10;spotify.com&#10;meet.google.com&#10;localhost:3000" spellcheck="false"></textarea>
+          <span class="field-help-text">Enter one domain per line (e.g. <code>spotify.com</code>, <code>meet.google.com</code>, <code>localhost</code>).</span>
+        </div>
+      </div>
+
+
+      <div class="settings-card privacy-card">
+        <div class="card-header">
+          <div class="privacy-title-row">
+            <span class="icon-shield" id="privacyShieldIcon"></span>
+            <h2 class="card-title">Privacy & Security Audit</h2>
+          </div>
+          <p class="card-subtitle">What Pinfold does and doesn't do with your data.</p>
+        </div>
+        <div class="privacy-checklist">
+          <div class="check-item">
+            <span class="check-icon">✓</span>
+            <div>
+              <strong>100% Local Storage:</strong> All your tabs, titles, and URLs live exclusively in your local browser profile (<code>chrome.storage.local</code>).
+            </div>
+          </div>
+          <div class="check-item">
+            <span class="check-icon">✓</span>
+            <div>
+              <strong>No Network Requests:</strong> No analytics, tracking, telemetry, or remote scripts. Favicons are read from your browser's local favicon cache, not from websites.
+            </div>
+          </div>
+          <div class="check-item">
+            <span class="check-icon">✓</span>
+            <div>
+              <strong>Previews Are Opt-In:</strong> Page screenshots are only taken if you turn on "Capture Page Previews". They stay on this device and are left out of exports and backups.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="settings-card danger-card">
+        <div class="card-header">
+          <h2 class="card-title">Data Backup & Reset</h2>
+          <p class="card-subtitle">Export your full dataset or reset all stored tabs.</p>
+        </div>
+        <div class="danger-actions">
+          <button id="btnBackupAll" class="btn btn-secondary">
+            <span id="backupIcon"></span>
+            <span>Download Full Backup (JSON)</span>
+          </button>
+          <button id="btnClearPreviews" class="btn btn-secondary">
+            <span>Delete Saved Page Previews</span>
+          </button>
+          <button id="btnClearAll" class="btn btn-danger">
+            <span id="clearIcon"></span>
+            <span>Clear All Saved Tabs</span>
+          </button>
+        </div>
+      </div>
+    </main>
+
+    <div id="toastContainer" class="toast-container"></div>
+  </div>
+
+  <script src="../utils/icons.js"></script>
+  <script src="../utils/storage.js"></script>
+  <script src="../utils/export_import.js"></script>
+  <script src="options.js"></script>
+</body>
+</html>
+

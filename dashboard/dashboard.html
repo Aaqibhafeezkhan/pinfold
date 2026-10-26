@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pinfold</title>
+  <link rel="stylesheet" href="dashboard.css">
+</head>
+<body data-theme="dark">
+  <div class="app-container">
+    <header class="top-header">
+      <div class="header-left">
+        <div class="logo-wrap" id="mainLogo"></div>
+        <span class="app-name">Pinfold</span>
+      </div>
+
+      <div class="header-search">
+        <span class="search-icon-inline" id="searchIcon"></span>
+        <input 
+          type="text" 
+          id="searchInput" 
+          placeholder="Search tabs..." 
+          autocomplete="off"
+          spellcheck="false"
+        />
+        <button id="btnClearSearch" class="btn-clear-search hidden" title="Clear search">✕</button>
+      </div>
+
+      <div class="header-right">
+        <button id="btnHeaderCollapseWindow" class="header-btn" title="Collapse tabs in current window">
+          <span id="collapseWindowIcon"></span>
+          <span>Collapse window</span>
+        </button>
+        <button id="btnOpenExportImport" class="header-btn" title="Export or import tabs">
+          <span>Export / Import</span>
+        </button>
+        <button id="themeToggleBtn" class="header-icon-btn" title="Toggle Dark/Light theme">
+          <span id="themeIcon"></span>
+        </button>
+        <button id="btnHeaderSettings" class="header-icon-btn" title="Settings">
+          <span id="headerSettingsIcon"></span>
+        </button>
+      </div>
+    </header>
+
+    <div class="workspace-layout">
+      <aside class="sidebar-panel">
+        <div class="sidebar-quick-nav">
+          <div class="sidebar-nav-item active" id="navAllTabs">
+            <span class="sidebar-nav-icon">📁</span>
+            <span class="sidebar-nav-label">All Tabs</span>
+            <span class="sidebar-nav-count" id="countAllTabs">0</span>
+          </div>
+          <div class="sidebar-nav-item" id="navFavorites">
+            <span class="sidebar-nav-icon">⭐</span>
+            <span class="sidebar-nav-label">Favorites</span>
+            <span class="sidebar-nav-count" id="countFavorites">0</span>
+          </div>
+        </div>
+
+        <div class="sidebar-tree-header">
+          <span class="sidebar-tree-title">FOLDERS & TABS</span>
+          <div class="tree-header-actions">
+            <button id="btnNewRootFolder" class="tree-mini-btn" title="New Folder">+ Folder</button>
+          </div>
+        </div>
+
+        <div class="tree-view-root" id="treeViewContainer">
+        </div>
+
+        <div class="sidebar-footer">
+          <div class="memory-stat-line" title="Rough estimate (about 50 MB per closed tab). Browser extensions can't measure a tab's real memory use.">
+            <span class="memory-dot"></span>
+            <span id="sidebarRamSaved">0 MB</span> memory freed (est.)
+          </div>
+          <div class="privacy-stat-line">
+            <span>100% Private • Local profile</span>
+          </div>
+        </div>
+      </aside>
+
+      <main class="content-panel">
+        <div id="searchStatusBar" class="search-status-bar hidden">
+          <span id="searchStatusText">Showing matching tabs</span>
+          <button id="btnResetSearch" class="link-btn">Show all</button>
+        </div>
+
+        <div class="content-actions-bar">
+          <div class="actions-left">
+            <span class="page-heading-title" id="currentViewTitle">All Tabs</span>
+          </div>
+          <div class="actions-right">
+            <div class="view-mode-toggle" id="viewModeToggleGroup">
+              <button id="btnViewList" class="view-toggle-btn active" title="List View">
+                <span>☰ List</span>
+              </button>
+              <button id="btnViewCards" class="view-toggle-btn" title="Cards View">
+                <span>⊞ Cards</span>
+              </button>
+            </div>
+            <span class="sep">|</span>
+            <button id="btnRestoreAllEverywhere" class="action-link-btn">Restore all</button>
+            <span class="sep">|</span>
+            <button id="btnDeleteAllUnlocked" class="action-link-btn danger-link">Delete all</button>
+            <span class="sep">|</span>
+            <select id="sortSelect" class="clean-select">
+              <option value="newest">Newest first</option>
+              <option value="oldest">Oldest first</option>
+              <option value="most_tabs">Most tabs</option>
+              <option value="title">Group name</option>
+            </select>
+          </div>
+        </div>
+
+        <div id="groupsContainer" class="onetab-groups-container">
+        </div>
+
+        <div id="emptyState" class="clean-empty-state hidden">
+          <h2>No saved tabs</h2>
+          <p>Click the Pinfold extension icon or press <kbd>Alt+Shift+D</kbd> to collapse open tabs and free memory.</p>
+          <div class="empty-btns">
+            <button id="btnEmptyCollapseWindow" class="onetab-btn onetab-btn-primary">Collapse current window</button>
+            <button id="btnEmptyImport" class="onetab-btn onetab-btn-secondary">Import tabs</button>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <div id="exportImportModal" class="modal-overlay hidden">
+      <div class="modal-card">
+        <div class="modal-header">
+          <h3 class="modal-title">Export / Import</h3>
+          <button id="btnCloseModal" class="btn-close-modal">✕</button>
+        </div>
+
+        <div class="modal-tabs-nav">
+          <button class="modal-nav-tab active" data-tab="export-onetab">OneTab Text</button>
+          <button class="modal-nav-tab" data-tab="export-md">Markdown</button>
+          <button class="modal-nav-tab" data-tab="export-json">JSON Backup</button>
+          <button class="modal-nav-tab" data-tab="import-tab">Import</button>
+        </div>
+
+        <div class="modal-body">
+          <div class="modal-panel active" id="panelExportOneTab">
+            <p class="panel-desc">Standard OneTab format (<code>URL | Title</code> per line).</p>
+            <textarea id="exportOneTabTextarea" class="code-textarea" readonly spellcheck="false"></textarea>
+            <div class="modal-actions">
+              <button id="btnCopyOneTab" class="onetab-btn onetab-btn-primary">Copy to clipboard</button>
+              <button id="btnDownloadOneTab" class="onetab-btn onetab-btn-secondary">Download .txt</button>
+            </div>
+          </div>
+
+          <div class="modal-panel" id="panelExportMd">
+            <p class="panel-desc">Markdown lists with clickable links and group headings.</p>
+            <textarea id="exportMdTextarea" class="code-textarea" readonly spellcheck="false"></textarea>
+            <div class="modal-actions">
+              <button id="btnCopyMd" class="onetab-btn onetab-btn-primary">Copy Markdown</button>
+              <button id="btnDownloadMd" class="onetab-btn onetab-btn-secondary">Download .md</button>
+            </div>
+          </div>
+
+          <div class="modal-panel" id="panelExportJson">
+            <p class="panel-desc">Full backup with all metadata and group timestamps.</p>
+            <textarea id="exportJsonTextarea" class="code-textarea" readonly spellcheck="false"></textarea>
+            <div class="modal-actions">
+              <button id="btnCopyJson" class="onetab-btn onetab-btn-primary">Copy JSON</button>
+              <button id="btnDownloadJson" class="onetab-btn onetab-btn-secondary">Download .json</button>
+            </div>
+          </div>
+
+          <div class="modal-panel" id="panelImport">
+            <p class="panel-desc">Paste OneTab exports, URLs, Markdown, or a JSON backup:</p>
+            <textarea id="importInputTextarea" class="code-textarea" placeholder="https://example.com | Example title&#10;https://github.com" spellcheck="false"></textarea>
+            <div class="import-mode-row">
+              <label><input type="radio" name="importMode" value="append" checked> Append</label>
+              <label><input type="radio" name="importMode" value="replace"> Replace all</label>
+            </div>
+            <div class="modal-actions">
+              <button id="btnExecuteImport" class="onetab-btn onetab-btn-primary">Import tabs</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="tabHoverCard" class="tab-hover-card hidden">
+      <div class="hover-card-header">
+        <div class="hover-card-title" id="hoverCardTitle">Page Title</div>
+        <div class="hover-card-meta-row">
+          <div class="hover-card-domain" id="hoverCardDomain">domain.com</div>
+          </div>
+      </div>
+      <div class="hover-card-body" id="hoverCardBody">
+      </div>
+    </div>
+
+    <div id="toastContainer" class="toast-container"></div>
+  </div>
+
+  <script src="../utils/icons.js"></script>
+  <script src="../utils/storage.js"></script>
+  <script src="../utils/export_import.js"></script>
+  <script src="dashboard.js"></script>
+</body>
+</html>
+

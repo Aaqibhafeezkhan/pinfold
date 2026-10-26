@@ -1,0 +1,13 @@
+{
+  "name": "pinfold",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Private, local-first tab manager for Chromium browsers",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "test": "node test_pinfold.js && node --test \"tests/*.test.js\""
+  }
+}

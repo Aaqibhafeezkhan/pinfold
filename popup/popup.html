@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pinfold</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="popup-wrap">
+    <div class="popup-head">
+      <div class="head-brand">
+        <div id="headerLogo" class="logo-box"></div>
+        <span class="head-title">Pinfold</span>
+        <span class="head-stats-pill">
+          <span id="currentWindowTabsCount">0</span> open • <span id="savedTabsCount">0</span> in Pinfold
+        </span>
+      </div>
+      <div class="head-actions">
+        <button id="btnOpenOptions" class="head-icon-btn" title="Settings">
+          <span id="settingsIcon"></span>
+        </button>
+      </div>
+    </div>
+
+    <div class="popup-actions-menu">
+      <button id="btnCollapseCurrent" class="action-row-btn" title="Send only current tab to Pinfold">
+        <div class="action-left">
+          <span class="action-icon" id="iconCurrentTab"></span>
+          <span class="action-label">Current Tab</span>
+        </div>
+        <kbd class="action-kbd">Alt+Shift+S</kbd>
+      </button>
+
+      <div class="action-divider"></div>
+
+      <div class="action-triplet-row">
+        <button id="btnCollapseLeft" class="action-triplet-btn" title="Send tabs to the left of active tab">
+          <span class="action-icon" id="iconTabsLeft"></span>
+          <span class="triplet-label">Tabs to Left</span>
+        </button>
+
+        <div class="vertical-divider"></div>
+
+        <button id="btnCollapseRight" class="action-triplet-btn" title="Send tabs to the right of active tab">
+          <span class="action-icon" id="iconTabsRight"></span>
+          <span class="triplet-label">Tabs to Right</span>
+        </button>
+
+        <div class="vertical-divider"></div>
+
+        <button id="btnCollapseExceptActive" class="action-triplet-btn" title="Send all tabs except active to Pinfold">
+          <span class="action-icon" id="iconOtherTabs"></span>
+          <span class="triplet-label">Other Tabs</span>
+        </button>
+      </div>
+
+      <div class="action-divider"></div>
+
+      <button id="btnCollapseAll" class="action-row-btn" title="Send all tabs in this window to Pinfold">
+        <div class="action-left">
+          <span class="action-icon" id="iconCollapseAll"></span>
+          <span class="action-label">Collapse All Tabs</span>
+        </div>
+        <kbd class="action-kbd">Alt+Shift+D</kbd>
+      </button>
+
+      <div class="action-divider"></div>
+
+      <button id="btnOpenDashboard" class="action-row-btn" title="Open Pinfold Dashboard">
+        <div class="action-left">
+          <span class="action-icon" id="iconDashboard"></span>
+          <span class="action-label">Open Dashboard</span>
+        </div>
+        <kbd class="action-kbd">Alt+Shift+O</kbd>
+      </button>
+    </div>
+  </div>
+
+  <script src="../utils/icons.js"></script>
+  <script src="../utils/storage.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>
+
+
+

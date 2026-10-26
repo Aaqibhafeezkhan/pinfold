@@ -1,0 +1,106 @@
+name: Bug report
+description: Something in Pinfold is broken or behaves unexpectedly.
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a bug. Please do not include private URLs, page titles, or exported data you do not want to be public.
+        To report a security vulnerability, use the private security advisory form instead of this template.
+
+  - type: dropdown
+    id: browser
+    attributes:
+      label: Browser
+      options:
+        - Chrome
+        - Edge
+        - Brave
+        - Other Chromium-based browser
+    validations:
+      required: true
+
+  - type: input
+    id: browser-version
+    attributes:
+      label: Browser version
+      description: "Find it at chrome://version (or edge://version, brave://version). If you chose \"Other\", name the browser here too."
+      placeholder: "e.g. Chrome 142.0.7444.60"
+    validations:
+      required: true
+
+  - type: input
+    id: pinfold-version
+    attributes:
+      label: Pinfold version
+      description: "Shown on the Pinfold card at chrome://extensions. Say if you loaded it unpacked from a git checkout (and which commit)."
+      placeholder: "e.g. 1.0.0 (Chrome Web Store) or 1.0.0 unpacked at abc1234"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: previews
+    attributes:
+      label: Are page previews enabled?
+      description: Options → "Capture Page Previews".
+      options:
+        - "No"
+        - "Yes"
+        - Not sure
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: The smallest set of steps that shows the problem.
+      placeholder: |
+        1. Open three tabs
+        2. Click the Pinfold toolbar icon and choose "Save all tabs"
+        3. Open the dashboard
+        4. ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behaviour
+      description: What you expected to happen.
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behaviour
+      description: What happened instead. Screenshots help, but blur or crop anything private.
+    validations:
+      required: true
+
+  - type: textarea
+    id: console
+    attributes:
+      label: Console errors
+      description: |
+        Paste any errors (remove private URLs first).
+        - **Service worker:** open chrome://extensions, turn on Developer mode, and on the Pinfold card click the "service worker" link next to "Inspect views". Check the Console tab.
+        - **Dashboard, popup or options page:** open the page, right-click it and choose "Inspect" (or press Ctrl+Shift+I / Cmd+Option+I). Check the Console tab. For the popup, right-click inside the open popup.
+        - You can also click "Errors" on the Pinfold card at chrome://extensions.
+      render: text
+
+  - type: textarea
+    id: extra
+    attributes:
+      label: Anything else?
+      description: Other extensions that manage tabs, your operating system, how many tabs or groups you have saved, etc.
+
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Privacy check
+      options:
+        - label: I removed private URLs, page titles and other personal data from this report.
+          required: true

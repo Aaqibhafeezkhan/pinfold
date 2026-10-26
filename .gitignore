@@ -1,0 +1,13 @@
+# Local tooling
+.claude/
+CLAUDE.local.md
+
+# Dependencies and build output
+node_modules/
+*.zip
+dist/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini

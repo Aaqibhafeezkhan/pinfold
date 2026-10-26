@@ -1,7 +1,8 @@
 # Cloudflare Pages response headers. https://developers.cloudflare.com/pages/configuration/headers/
-# The site has no JavaScript, no inline styles and no third-party resources, so the policy is strict.
+# The only JavaScript is the same-origin /theme.js (theme switch). No inline scripts or styles and no
+# third-party resources, so the policy stays strict.
 /*
-  Content-Security-Policy: default-src 'none'; img-src 'self'; style-src 'self'; script-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'
+  Content-Security-Policy: default-src 'none'; img-src 'self'; style-src 'self'; script-src 'self'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'
   Referrer-Policy: no-referrer
   X-Content-Type-Options: nosniff
   X-Frame-Options: DENY

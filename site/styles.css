@@ -1,8 +1,10 @@
 /* Pinfold website. One stylesheet, no frameworks, no external resources.
-   Brand colors come from icons/icon.svg: indigo #4F46E5 -> violet #7C3AED, cyan accent #06B6D4. */
+   Brand colors come from icons/icon.svg: indigo #4F46E5 -> violet #7C3AED, cyan accent #06B6D4.
+   The site is light by default, whatever the OS setting. site/theme.js sets data-theme="dark" on
+   <html> when the visitor picks the dark theme with the header button. */
 
 :root {
-  color-scheme: light dark;
+  color-scheme: light;
 
   --brand: #4f46e5;
   --brand-2: #7c3aed;
@@ -35,38 +37,44 @@
 
   --radius: 16px;
   --radius-sm: 10px;
-  --container: 1120px;
+  --container: 1200px;
   --gutter: clamp(16px, 4vw, 32px);
   --font: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
   --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #0e0d1c;
-    --bg-tint: #15142a;
-    --surface: #18172e;
-    --surface-2: #201f3a;
-    --text: #edecfb;
-    --text-muted: #b1afcc;
-    --border: #2c2a4a;
-    --border-strong: #3d3a63;
-    --link: #a5b4fc;
-    --link-hover: #c4b5fd;
-    --kicker: #a5b4fc;
-    --cyan-text: #67e8f9;
-    --check-bg: rgba(6, 182, 212, 0.16);
-    --check: #67e8f9;
-    --focus: #a5b4fc;
-    --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 12px 32px -12px rgba(0, 0, 0, 0.6);
-    --shadow-lg: 0 2px 4px rgba(0, 0, 0, 0.35), 0 32px 64px -24px rgba(0, 0, 0, 0.75);
-    --fold-1: rgba(99, 102, 241, 0.45);
-    --fold-2: rgba(139, 92, 246, 0.3);
-    --glow-1: rgba(99, 102, 241, 0.22);
-    --glow-2: rgba(6, 182, 212, 0.12);
-    --code-bg: #0a0916;
-    --code-text: #e8e7f7;
-  }
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0e0d1c;
+  --bg-tint: #15142a;
+  --surface: #18172e;
+  --surface-2: #201f3a;
+  --text: #edecfb;
+  --text-muted: #b1afcc;
+  --border: #2c2a4a;
+  --border-strong: #3d3a63;
+  --link: #a5b4fc;
+  --link-hover: #c4b5fd;
+  --kicker: #a5b4fc;
+  --cyan-text: #67e8f9;
+  --check-bg: rgba(6, 182, 212, 0.16);
+  --check: #67e8f9;
+  --focus: #a5b4fc;
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 12px 32px -12px rgba(0, 0, 0, 0.6);
+  --shadow-lg: 0 2px 4px rgba(0, 0, 0, 0.35), 0 32px 64px -24px rgba(0, 0, 0, 0.75);
+  --fold-1: rgba(99, 102, 241, 0.45);
+  --fold-2: rgba(139, 92, 246, 0.3);
+  --glow-1: rgba(99, 102, 241, 0.22);
+  --glow-2: rgba(6, 182, 212, 0.12);
+  --code-bg: #0a0916;
+  --code-text: #e8e7f7;
+}
+
+/* Screenshots come in a light and a dark version; show the one matching the theme.
+   display: none also keeps a lazy-loaded image from downloading until its theme is chosen. */
+:root:not([data-theme="dark"]) .only-dark,
+:root[data-theme="dark"] .only-light {
+  display: none;
 }
 
 /* ---------- Base ---------- */
@@ -266,6 +274,43 @@ code {
   background: var(--surface-2);
 }
 
+.site-nav li {
+  display: flex;
+  align-items: center;
+}
+
+.site-nav li[hidden] {
+  display: none;
+}
+
+/* Sun/moon theme switch. Hidden (via the hidden attribute) until site/theme.js runs. */
+.theme-toggle {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  margin-left: 4px;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--text-muted);
+  font: inherit;
+  cursor: pointer;
+}
+
+.theme-toggle:hover {
+  color: var(--text);
+  border-color: var(--border-strong);
+  background: var(--surface-2);
+}
+
+/* Show the moon in the light theme (switch to dark) and the sun in the dark theme. */
+:root[data-theme="dark"] .theme-toggle .icon-moon,
+:root:not([data-theme="dark"]) .theme-toggle .icon-sun {
+  display: none;
+}
+
 @media (max-width: 420px) {
   .brand {
     font-size: 1.125rem;
@@ -277,13 +322,47 @@ code {
     height: 28px;
   }
 
+  .header-inner {
+    gap: 8px;
+  }
+
   .site-nav ul {
     gap: 0;
   }
 
   .site-nav a {
-    padding: 8px 8px;
+    padding: 8px 6px;
     font-size: 0.9375rem;
+  }
+
+  .theme-toggle {
+    width: 36px;
+    height: 36px;
+    margin-left: 2px;
+  }
+}
+
+/* Very narrow phones: keep brand, links and theme button on one row. */
+@media (max-width: 370px) {
+  .brand-name {
+    font-size: 1rem;
+  }
+
+  .site-nav a {
+    padding: 8px 5px;
+    font-size: 0.875rem;
+  }
+}
+
+/* 340px and below: the logo alone stands for the brand; the name stays for screen readers. */
+@media (max-width: 340px) {
+  .site-header .brand-name {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
   }
 }
 
@@ -362,6 +441,7 @@ code {
 @media (prefers-reduced-motion: no-preference) {
   .btn,
   .site-nav a,
+  .theme-toggle,
   .oss-links a,
   .shot-frame {
     transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease, transform 0.2s ease, box-shadow 0.2s ease;
@@ -496,7 +576,7 @@ code {
   width: 100%;
 }
 
-/* Wide screens: copy on the left, screenshot on the right running off the edge of the page. */
+/* Wide screens: copy on the left, screenshot on the right, both inside the centered container. */
 @media (min-width: 1080px) {
   .hero {
     padding-block: 88px 104px;
@@ -504,8 +584,8 @@ code {
 
   .hero .container {
     display: grid;
-    grid-template-columns: minmax(0, 34rem) minmax(0, 1fr);
-    gap: 56px;
+    grid-template-columns: minmax(0, 30rem) minmax(0, 1fr);
+    gap: clamp(40px, 4vw, 64px);
     align-items: center;
   }
 
@@ -515,7 +595,6 @@ code {
 
   .hero-shot {
     margin: 0;
-    width: 780px;
   }
 }
 
@@ -826,7 +905,7 @@ code {
 @media (min-width: 760px) {
   .footer-inner {
     grid-template-columns: 1fr auto;
-    align-items: start;
+    align-items: center;
   }
 
   .footer-note {
@@ -834,8 +913,8 @@ code {
   }
 }
 
-.footer-brand p {
-  margin-top: 8px;
+.footer-inner .brand {
+  justify-self: start;
 }
 
 .footer-nav ul {

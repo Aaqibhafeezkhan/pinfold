@@ -5,12 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Page not found · Pinfold</title>
   <meta name="robots" content="noindex">
-  <meta name="color-scheme" content="light dark">
-  <meta name="theme-color" content="#f7f7fc" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#0e0d1c" media="(prefers-color-scheme: dark)">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#f7f7fc">
   <link rel="icon" href="/assets/icon.svg" type="image/svg+xml">
   <link rel="icon" href="/assets/icon32.png" sizes="32x32" type="image/png">
   <link rel="stylesheet" href="/styles.css">
+  <script src="/theme.js"></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -26,6 +26,12 @@
           <li><a href="/#features">Features</a></li>
           <li><a href="/#privacy">Privacy</a></li>
           <li><a href="https://github.com/Tektrix/pinfold">GitHub</a></li>
+          <li class="theme-item" hidden>
+            <button class="theme-toggle" type="button" aria-label="Switch to dark theme" title="Switch to dark theme">
+              <svg class="icon-moon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></svg>
+              <svg class="icon-sun" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/></g></svg>
+            </button>
+          </li>
         </ul>
       </nav>
     </div>
@@ -45,13 +51,10 @@
 
   <footer class="site-footer">
     <div class="container footer-inner">
-      <div class="footer-brand">
-        <a class="brand brand-small" href="/">
-          <img class="brand-logo" src="/assets/icon.svg" alt="" width="24" height="24">
-          <span class="brand-name">Pinfold</span>
-        </a>
-        <p>Free and open source under the <a href="https://github.com/Tektrix/pinfold/blob/main/LICENSE">MIT license</a>.</p>
-      </div>
+      <a class="brand brand-small" href="/">
+        <img class="brand-logo" src="/assets/icon.svg" alt="" width="24" height="24">
+        <span class="brand-name">Pinfold</span>
+      </a>
       <nav class="footer-nav" aria-label="Footer">
         <ul>
           <li><a href="https://github.com/Tektrix/pinfold">GitHub</a></li>
@@ -59,7 +62,7 @@
           <li><a href="https://github.com/Tektrix/pinfold/blob/main/CHANGELOG.md">Changelog</a></li>
         </ul>
       </nav>
-      <p class="footer-note">No cookies, no analytics on this site either.</p>
+      <p class="footer-note">Free and open source under the <a href="https://github.com/Tektrix/pinfold/blob/main/LICENSE">MIT license</a>. No cookies, no analytics on this site either. The theme button remembers your choice in this browser's local storage.</p>
     </div>
   </footer>
 </body>

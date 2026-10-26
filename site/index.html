@@ -6,13 +6,13 @@
   <title>Pinfold: a private, local-first tab manager</title>
   <meta name="description" content="Pinfold is a free, open-source tab manager browser extension. Save the tabs you aren't using into folders, search them, and reopen them later. Everything stays on your device: no accounts, no tracking, no network requests.">
   <link rel="canonical" href="https://pinfold.page/">
-  <meta name="color-scheme" content="light dark">
-  <meta name="theme-color" content="#f7f7fc" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#0e0d1c" media="(prefers-color-scheme: dark)">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#f7f7fc">
   <link rel="icon" href="/assets/icon.svg" type="image/svg+xml">
   <link rel="icon" href="/assets/icon32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="/assets/icon128.png">
   <link rel="stylesheet" href="/styles.css">
+  <script src="/theme.js"></script>
 
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Pinfold">
@@ -44,6 +44,12 @@
           <li><a href="/#features">Features</a></li>
           <li><a href="/#privacy">Privacy</a></li>
           <li><a href="https://github.com/Tektrix/pinfold">GitHub</a></li>
+          <li class="theme-item" hidden>
+            <button class="theme-toggle" type="button" aria-label="Switch to dark theme" title="Switch to dark theme">
+              <svg class="icon-moon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></svg>
+              <svg class="icon-sun" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/></g></svg>
+            </button>
+          </li>
         </ul>
       </nav>
     </div>
@@ -86,9 +92,12 @@
 
         <figure class="hero-shot">
           <div class="shot-frame">
-            <img src="/assets/01-dashboard-list.png" width="1280" height="800" alt="The Pinfold dashboard in list view: a sidebar with nested folders such as Work, Research and Reading list, and a list of saved tabs grouped under titles like Sprint planning, each with Restore, Delete and Lock buttons.">
+            <!-- One image per site theme; CSS shows the one matching [data-theme]. The dark one is lazy
+                 so light-theme visitors never download it (lazy images inside display:none don't load). -->
+            <img class="only-light" src="/assets/list-light.png" width="1280" height="800" fetchpriority="high" alt="The Pinfold dashboard in list view: a sidebar with nested folders such as Work, Research and Reading list, and a list of saved tabs grouped under titles like Sprint planning, each with Restore, Delete and Lock buttons.">
+            <img class="only-dark" src="/assets/list-dark.png" width="1280" height="800" loading="lazy" alt="The Pinfold dashboard in list view, dark theme: a sidebar with nested folders such as Work, Research and Reading list, and a list of saved tabs grouped under titles like Sprint planning, each with Restore, Delete and Lock buttons.">
           </div>
-          <figcaption class="visually-hidden">The Pinfold dashboard, list view, light theme.</figcaption>
+          <figcaption class="visually-hidden">The Pinfold dashboard in list view.</figcaption>
         </figure>
       </div>
     </section>
@@ -197,21 +206,31 @@
         </div>
 
         <div class="shot-grid">
+          <!-- Each screenshot exists in a light and a dark version; CSS shows the one matching the site theme. -->
           <figure class="shot shot-wide">
-            <a class="shot-frame" href="/assets/02-dashboard-cards.png">
-              <img src="/assets/02-dashboard-cards.png" width="1280" height="800" loading="lazy" decoding="async" alt="The Pinfold dashboard in cards view with the dark theme: saved tabs shown as cards with the site name, domain, time saved and Restore, Delete and Lock buttons.">
+            <a class="shot-frame only-light" href="/assets/cards-light.png">
+              <img src="/assets/cards-light.png" width="1280" height="800" loading="lazy" decoding="async" alt="The Pinfold dashboard in cards view: saved tabs shown as cards, each with a preview thumbnail of the page, the site name and domain, and Restore, Delete and Lock buttons.">
             </a>
-            <figcaption>Cards view, dark theme.</figcaption>
+            <a class="shot-frame only-dark" href="/assets/cards-dark.png">
+              <img src="/assets/cards-dark.png" width="1280" height="800" loading="lazy" decoding="async" alt="The Pinfold dashboard in cards view, dark theme: saved tabs shown as cards, each with a preview thumbnail of the page, the site name and domain, and Restore, Delete and Lock buttons.">
+            </a>
+            <figcaption>Cards view with page previews.</figcaption>
           </figure>
           <figure class="shot">
-            <a class="shot-frame" href="/assets/03-search.png">
-              <img src="/assets/03-search.png" width="1280" height="800" loading="lazy" decoding="async" alt="Searching the dashboard for &quot;wiki&quot; shows three matching saved tabs, including Alan Turing on Wikipedia and a Lisbon travel guide on Wikivoyage.">
+            <a class="shot-frame only-light" href="/assets/search-light.png">
+              <img src="/assets/search-light.png" width="1280" height="800" loading="lazy" decoding="async" alt="Searching the dashboard for &quot;wiki&quot; shows the matching saved tabs, including Wikipedia articles such as Tab (interface) and a Lisbon travel guide on Wikivoyage.">
+            </a>
+            <a class="shot-frame only-dark" href="/assets/search-dark.png">
+              <img src="/assets/search-dark.png" width="1280" height="800" loading="lazy" decoding="async" alt="Searching the dashboard for &quot;wiki&quot;, dark theme: the matching saved tabs include Wikipedia articles such as Tab (interface) and a Lisbon travel guide on Wikivoyage.">
             </a>
             <figcaption>Search matches titles, addresses and domains.</figcaption>
           </figure>
           <figure class="shot">
-            <a class="shot-frame" href="/assets/05-popup.png">
-              <img src="/assets/05-popup.png" width="1280" height="800" loading="lazy" decoding="async" alt="The Pinfold toolbar popup with buttons for Current Tab, Tabs to Left, Tabs to Right, Other Tabs, Collapse All Tabs and Open Dashboard, with their keyboard shortcuts.">
+            <a class="shot-frame only-light" href="/assets/popup-light.png">
+              <img src="/assets/popup-light.png" width="1280" height="800" loading="lazy" decoding="async" alt="The Pinfold toolbar popup with buttons for Current Tab, Tabs to Left, Tabs to Right, Other Tabs, Collapse All Tabs and Open Dashboard, with their keyboard shortcuts.">
+            </a>
+            <a class="shot-frame only-dark" href="/assets/popup-dark.png">
+              <img src="/assets/popup-dark.png" width="1280" height="800" loading="lazy" decoding="async" alt="The Pinfold toolbar popup, dark theme, with buttons for Current Tab, Tabs to Left, Tabs to Right, Other Tabs, Collapse All Tabs and Open Dashboard, with their keyboard shortcuts.">
             </a>
             <figcaption>The toolbar popup: one tab, one side of the window, or everything.</figcaption>
           </figure>
@@ -264,13 +283,10 @@ npm test</code></pre>
   <!-- site-footer:start (copied into privacy.html by scripts/build-privacy-page.js) -->
   <footer class="site-footer">
     <div class="container footer-inner">
-      <div class="footer-brand">
-        <a class="brand brand-small" href="/">
-          <img class="brand-logo" src="/assets/icon.svg" alt="" width="24" height="24">
-          <span class="brand-name">Pinfold</span>
-        </a>
-        <p>Free and open source under the <a href="https://github.com/Tektrix/pinfold/blob/main/LICENSE">MIT license</a>.</p>
-      </div>
+      <a class="brand brand-small" href="/">
+        <img class="brand-logo" src="/assets/icon.svg" alt="" width="24" height="24">
+        <span class="brand-name">Pinfold</span>
+      </a>
       <nav class="footer-nav" aria-label="Footer">
         <ul>
           <li><a href="https://github.com/Tektrix/pinfold">GitHub</a></li>
@@ -278,7 +294,7 @@ npm test</code></pre>
           <li><a href="https://github.com/Tektrix/pinfold/blob/main/CHANGELOG.md">Changelog</a></li>
         </ul>
       </nav>
-      <p class="footer-note">No cookies, no analytics on this site either.</p>
+      <p class="footer-note">Free and open source under the <a href="https://github.com/Tektrix/pinfold/blob/main/LICENSE">MIT license</a>. No cookies, no analytics on this site either. The theme button remembers your choice in this browser's local storage.</p>
     </div>
   </footer>
   <!-- site-footer:end -->

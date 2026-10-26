@@ -245,13 +245,13 @@ function renderPrivacyPage({ markdown, indexHtml }) {
   <title>Privacy policy · Pinfold</title>
   <meta name="description" content="${escapeHtml(description)}">
   <link rel="canonical" href="https://pinfold.page/privacy">
-  <meta name="color-scheme" content="light dark">
-  <meta name="theme-color" content="#f7f7fc" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#0e0d1c" media="(prefers-color-scheme: dark)">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#f7f7fc">
   <link rel="icon" href="/assets/icon.svg" type="image/svg+xml">
   <link rel="icon" href="/assets/icon32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="/assets/icon128.png">
   <link rel="stylesheet" href="/styles.css">
+  <script src="/theme.js"></script>
 
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Pinfold">

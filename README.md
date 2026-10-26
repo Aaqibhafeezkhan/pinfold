@@ -4,6 +4,8 @@ A private, local-first tab manager for Chromium browsers.
 
 **Website:** [pinfold.page](https://pinfold.page) · **Privacy policy:** [pinfold.page/privacy](https://pinfold.page/privacy) · **Contact:** [info@pinfold.page](mailto:info@pinfold.page)
 
+**Install:** [Edge Add-ons](https://microsoftedge.microsoft.com/addons/detail/pinfold-private-tab-man/bhmddgchhmnnckoifdapdlfdimegnnej) · Chrome Web Store (coming soon) · [from source](#install)
+
 [![Manifest V3](https://img.shields.io/badge/Chrome%20Extension-Manifest%20V3-4285F4?logo=googlechrome&logoColor=white)](https://developer.chrome.com/docs/extensions/develop/migrate/what-is-mv3)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
@@ -79,9 +81,10 @@ See [PRIVACY.md](PRIVACY.md) for the full privacy policy.
 
 ## Install
 
-**Chrome Web Store:** coming soon.
+- **Microsoft Edge:** [Get Pinfold from Edge Add-ons](https://microsoftedge.microsoft.com/addons/detail/pinfold-private-tab-man/bhmddgchhmnnckoifdapdlfdimegnnej)
+- **Chrome Web Store:** coming soon (in review).
 
-**Load unpacked (for now, or for development):**
+**Load unpacked (for development, or in other Chromium browsers until the Chrome listing is live):**
 
 1. Clone the repository:
    ```bash

@@ -10,6 +10,8 @@ Please report vulnerabilities privately through GitHub: open the repository's **
 
 https://github.com/Tektrix/pinfold/security/advisories/new
 
+If you can't use GitHub's private reporting, email info@pinfold.page instead.
+
 Do not open a public issue, pull request or discussion for a security problem until a fix is released.
 
 Include:

@@ -51,4 +51,4 @@ If this policy changes, the updated version will be published in the project rep
 
 ## Contact
 
-Questions or concerns: open an issue at https://github.com/Tektrix/pinfold/issues
+Questions or concerns: email info@pinfold.page or open an issue at https://github.com/Tektrix/pinfold/issues

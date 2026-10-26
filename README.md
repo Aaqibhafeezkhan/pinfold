@@ -2,7 +2,7 @@
 
 A private, local-first tab manager for Chromium browsers.
 
-**Website:** [pinfold.page](https://pinfold.page) · **Privacy policy:** [pinfold.page/privacy](https://pinfold.page/privacy)
+**Website:** [pinfold.page](https://pinfold.page) · **Privacy policy:** [pinfold.page/privacy](https://pinfold.page/privacy) · **Contact:** [info@pinfold.page](mailto:info@pinfold.page)
 
 [![Manifest V3](https://img.shields.io/badge/Chrome%20Extension-Manifest%20V3-4285F4?logo=googlechrome&logoColor=white)](https://developer.chrome.com/docs/extensions/develop/migrate/what-is-mv3)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)

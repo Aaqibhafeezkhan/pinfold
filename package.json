@@ -9,6 +9,7 @@
   },
   "scripts": {
     "test": "node test_pinfold.js && node --test \"tests/*.test.js\"",
-    "package": "node scripts/package.js"
+    "package": "node scripts/package.js",
+    "build:site": "node scripts/build-privacy-page.js"
   }
 }

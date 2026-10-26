@@ -21,9 +21,9 @@ Store text fields don't render Markdown, so everything inside a fenced block is 
 | Category, Chrome Web Store | **Functionality & UI**. The CWS docs define it as "Extensions that enhance the Chrome user interface, such as tab managers..." Alternative: Workflow & Planning. |
 | Category, Edge Add-ons | **Productivity** (unconfirmed: the Edge docs don't publish the category list, so pick the closest entry in the dropdown) |
 | Language | English (United States) / `en-US`. The package has no `_locales`, so it lists a single language. |
-| Homepage URL (CWS) / Website (Edge) | `https://github.com/Tektrix/pinfold` |
+| Homepage URL (CWS) / Website (Edge) | `https://pinfold.page` |
 | Support URL (CWS) / Support contact detail (Edge) | `https://github.com/Tektrix/pinfold/issues` |
-| Privacy policy URL (both) | `https://github.com/Tektrix/pinfold/blob/main/PRIVACY.md` |
+| Privacy policy URL (both) | `https://pinfold.page/privacy` |
 | Mature content (both) | No / unchecked |
 | Official URL (CWS) | Leave empty. The dropdown only offers sites you have verified in Search Console, and a github.com repo can't be verified. |
 | YouTube video (both, optional) | None |
@@ -90,7 +90,7 @@ Pinfold is free and open source under the MIT license. Read the code, report a p
 https://github.com/Tektrix/pinfold
 
 Privacy policy:
-https://github.com/Tektrix/pinfold/blob/main/PRIVACY.md
+https://pinfold.page/privacy
 ```
 
 ---
@@ -180,7 +180,7 @@ This matches PRIVACY.md, which already says Pinfold accesses tab titles, URLs an
 ### Privacy policy
 
 ```
-https://github.com/Tektrix/pinfold/blob/main/PRIVACY.md
+https://pinfold.page/privacy
 ```
 
 ### Test instructions tab (optional)
@@ -195,7 +195,7 @@ Partner Center walks through these pages: **Packages**, **Availability**, **Prop
 
 **Properties**
 - Category: Productivity (see Basics)
-- Website: `https://github.com/Tektrix/pinfold`
+- Website: `https://pinfold.page`
 - Support contact detail: `https://github.com/Tektrix/pinfold/issues`
 - Mature content: unchecked
 

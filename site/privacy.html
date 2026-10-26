@@ -1,0 +1,125 @@
+<!doctype html>
+<!-- Generated from PRIVACY.md by scripts/build-privacy-page.js. Do not edit by hand: run `npm run build:site`. -->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacy policy · Pinfold</title>
+  <meta name="description" content="Pinfold's privacy policy: what data the extension accesses, where it is stored, and how to delete it. Everything stays on your device.">
+  <link rel="canonical" href="https://pinfold.page/privacy">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#f7f7fc" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0e0d1c" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="/assets/icon.svg" type="image/svg+xml">
+  <link rel="icon" href="/assets/icon32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="/assets/icon128.png">
+  <link rel="stylesheet" href="/styles.css">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Pinfold">
+  <meta property="og:title" content="Pinfold privacy policy">
+  <meta property="og:description" content="Pinfold's privacy policy: what data the extension accesses, where it is stored, and how to delete it. Everything stays on your device.">
+  <meta property="og:url" content="https://pinfold.page/privacy">
+  <meta property="og:image" content="https://pinfold.page/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Pinfold logo with the tagline: a private, local-first tab manager.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Pinfold privacy policy">
+  <meta name="twitter:description" content="Pinfold's privacy policy: what data the extension accesses, where it is stored, and how to delete it. Everything stays on your device.">
+  <meta name="twitter:image" content="https://pinfold.page/assets/og-image.png">
+  <meta name="twitter:image:alt" content="Pinfold logo with the tagline: a private, local-first tab manager.">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="/">
+        <img class="brand-logo" src="/assets/icon.svg" alt="" width="32" height="32">
+        <span class="brand-name">Pinfold</span>
+      </a>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+          <li><a href="/#features">Features</a></li>
+          <li><a href="/#privacy">Privacy</a></li>
+          <li><a href="https://github.com/Tektrix/pinfold">GitHub</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="doc">
+    <div class="container">
+      <article class="prose">
+        <h1 id="pinfold-privacy-policy">Pinfold Privacy Policy</h1>
+        <p>Last updated: 2026-10-22</p>
+        <p>Pinfold is a tab manager browser extension. This policy explains what data it accesses, where that data is kept, and how to delete it. In short: everything stays on your device, and nothing is sent to us or to anyone else.</p>
+        <h2 id="what-data-pinfold-accesses">What data Pinfold accesses</h2>
+        <ul>
+        <li><strong>Tab titles and URLs.</strong> When you save tabs (from the popup, the right-click menu, or a keyboard shortcut), Pinfold reads the title and address of those tabs so it can store them and reopen them later. Tabs in incognito windows are never saved.</li>
+        <li><strong>Page screenshots (optional, off by default).</strong> If you turn on &quot;Capture Page Previews&quot; in Options, Pinfold takes a small, low-quality screenshot of each tab as you save it, to show as a thumbnail in the dashboard.</li>
+        <li><strong>Site icons.</strong> Pinfold displays icons from your browser's own local favicon cache. It does not download them from websites.</li>
+        <li><strong>Your settings</strong>, such as theme, excluded domains, and restore behavior.</li>
+        </ul>
+        <p>Apart from the optional page previews described below, Pinfold does not read page contents. It never reads form data, passwords, cookies, or browsing history.</p>
+        <h2 id="where-data-is-stored">Where data is stored</h2>
+        <p>All data is stored locally in your browser profile using the extension storage API (<code>chrome.storage.local</code>). It is not synced to other devices and is not uploaded anywhere.</p>
+        <h2 id="what-is-sent-anywhere">What is sent anywhere</h2>
+        <p>Nothing. Pinfold has no servers, accounts, analytics, telemetry, advertising, or tracking. It loads no remote code, fonts, or other resources. No data is sold, shared with, or transferred to third parties.</p>
+        <p>Data only leaves the extension if you choose to export it (copy to the clipboard or download a file). Exports and backups never include page screenshots.</p>
+        <h2 id="how-to-delete-your-data">How to delete your data</h2>
+        <ul>
+        <li><strong>Delete page previews:</strong> Options → &quot;Delete Saved Page Previews&quot;. You can also turn previews off in Options so no new ones are captured.</li>
+        <li><strong>Delete all saved tabs and folders:</strong> Options → &quot;Clear All Saved Tabs&quot;.</li>
+        <li><strong>Delete individual items:</strong> use the delete buttons in the dashboard (unlock locked items first).</li>
+        <li><strong>Delete everything, including settings:</strong> uninstall the extension. The browser removes all of its stored data.</li>
+        </ul>
+        <h2 id="permissions-and-why-they-are-needed">Permissions and why they are needed</h2>
+        <div class="table-wrap">
+        <table>
+        <thead>
+        <tr><th>Permission</th><th>Purpose</th></tr>
+        </thead>
+        <tbody>
+        <tr><td><code>tabs</code></td><td>Read the titles and URLs of the tabs you save, and close or reopen tabs.</td></tr>
+        <tr><td><code>storage</code></td><td>Keep your saved tabs, folders and settings on your device.</td></tr>
+        <tr><td><code>unlimitedStorage</code></td><td>Allow large collections of saved tabs (and optional previews) to fit in local storage.</td></tr>
+        <tr><td><code>contextMenus</code></td><td>Provide the right-click menu entries.</td></tr>
+        <tr><td><code>favicon</code></td><td>Show site icons from the browser's local favicon cache without contacting websites.</td></tr>
+        <tr><td>Access to all sites (optional)</td><td>Requested only if you turn on page previews. The browser requires it to take tab screenshots. It is not granted at install, and Pinfold does not use it for anything else.</td></tr>
+        </tbody>
+        </table>
+        </div>
+        <h2 id="childrens-privacy">Children's privacy</h2>
+        <p>Pinfold does not collect personal information from anyone, including children.</p>
+        <h2 id="changes-to-this-policy">Changes to this policy</h2>
+        <p>If this policy changes, the updated version will be published in the project repository with a new date.</p>
+        <h2 id="contact">Contact</h2>
+        <p>Questions or concerns: open an issue at <a href="https://github.com/Tektrix/pinfold/issues">https://github.com/Tektrix/pinfold/issues</a></p>
+        <p><a class="back-link" href="/">&larr; Back to the Pinfold home page</a></p>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <a class="brand brand-small" href="/">
+          <img class="brand-logo" src="/assets/icon.svg" alt="" width="24" height="24">
+          <span class="brand-name">Pinfold</span>
+        </a>
+        <p>Free and open source under the <a href="https://github.com/Tektrix/pinfold/blob/main/LICENSE">MIT license</a>.</p>
+      </div>
+      <nav class="footer-nav" aria-label="Footer">
+        <ul>
+          <li><a href="https://github.com/Tektrix/pinfold">GitHub</a></li>
+          <li><a href="/privacy">Privacy policy</a></li>
+          <li><a href="https://github.com/Tektrix/pinfold/blob/main/CHANGELOG.md">Changelog</a></li>
+        </ul>
+      </nav>
+      <p class="footer-note">No cookies, no analytics on this site either.</p>
+    </div>
+  </footer>
+</body>
+</html>

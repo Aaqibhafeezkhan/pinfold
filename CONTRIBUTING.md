@@ -30,6 +30,7 @@ This runs `node test_pinfold.js` (manifest, icons, a scan for network calls and 
 - Add unit tests as `tests/<name>.test.js` using `node:test` and `node:assert`.
 - `tests/storage.test.js` has an in-memory `chrome.storage.local` mock (`installChromeMock`) with asynchronous callbacks, so races behave like the real API. Copy it when you need storage in a new test file.
 - If you add a new source file, add it to the `srcFiles` list in `test_pinfold.js` so it is covered by the network scan.
+- `tests/pages.test.js` loads each page's scripts together and checks that every element id a script looks up exists in its HTML. If you rename or remove an element, update both files.
 
 ## Project layout
 

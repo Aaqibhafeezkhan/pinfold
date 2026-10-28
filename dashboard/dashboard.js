@@ -1220,7 +1220,7 @@ function bindEventListeners() {
   });
 
   document.getElementById('themeToggleBtn').addEventListener('click', async () => {
-    const current = state.settings?.theme || 'dark';
+    const current = document.body.dataset.theme;
     const nextTheme = current === 'dark' ? 'light' : 'dark';
     state.settings = await PinfoldStorage.updateSettings({ theme: nextTheme });
     applyTheme(nextTheme);

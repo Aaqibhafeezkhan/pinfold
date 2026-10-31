@@ -420,7 +420,7 @@ function renderGroupsList() {
 
       const groupNameMatch = group.title && group.title.toLowerCase().includes(q);
       if (groupNameMatch || matchingTabs.length > 0) {
-        totalMatches += matchingTabs.length;
+        totalMatches += (groupNameMatch ? group.tabs : matchingTabs).length;
         return {
           ...group,
           tabs: groupNameMatch ? group.tabs : matchingTabs

@@ -79,21 +79,34 @@ const ExportImport = {
       throw new Error('Import content is too large (maximum 20 MB).');
     }
 
-    const trimmed = rawContent.trim();
+    const result = this._parseByFormat(rawContent.trim());
+    // An import that yields nothing must never reach storage: in Replace mode it would
+    // wipe every saved tab.
+    if (result.totalTabs === 0) {
+      throw new Error('No valid tabs were found to import. Nothing was changed.');
+    }
+    return result;
+  },
 
+  _parseByFormat(trimmed) {
+    // Text that starts like JSON is only ever read as JSON. A cut-off or unrelated JSON
+    // file used to fall through to the text parser and import junk "tabs".
     if (trimmed.startsWith('{') || trimmed.startsWith('[')) {
-      let parsed = null;
+      let parsed;
       try {
         parsed = JSON.parse(trimmed);
       } catch (e) {
+        throw new Error('This looks like a JSON backup, but it could not be read. It may be incomplete or damaged. Nothing was changed.');
       }
       if (parsed && (parsed.app === 'Tabi' || parsed.app === 'Pinfold') && Array.isArray(parsed.groups)) {
         const groups = this._sanitizeImportedGroups(parsed.groups);
         return { groups, format: 'pinfold_json', totalTabs: this._countTabs(groups) };
-      } else if (Array.isArray(parsed)) {
+      }
+      if (Array.isArray(parsed)) {
         const groups = this._sanitizeImportedGroups(parsed);
         return { groups, format: 'json_array', totalTabs: this._countTabs(groups) };
       }
+      throw new Error('This JSON is not a Pinfold backup. Nothing was changed.');
     }
 
     if (trimmed.includes('## ') || (trimmed.includes('- [') && trimmed.includes(']('))) {

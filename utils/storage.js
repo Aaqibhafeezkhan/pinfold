@@ -332,6 +332,10 @@ const PinfoldStorage = {
   },
 
   async importGroups(importedGroups, mode = 'merge') {
+    const importedTabs = (importedGroups || []).reduce((n, g) => n + (Array.isArray(g.tabs) ? g.tabs.length : 0), 0);
+    if (mode === 'replace' && importedTabs === 0) {
+      throw new Error('Refusing to replace saved tabs with an empty import.');
+    }
     return withStorageLock(async () => {
       if (mode === 'replace') {
         await this.saveGroups(importedGroups);

@@ -251,3 +251,10 @@ test('locked groups keep their tabs unless removal is forced', async () => {
   assert.strictEqual(await PinfoldStorage.removeTabFromGroup('g1', 't0', true), true);
   assert.strictEqual((await PinfoldStorage.getGroups())[0].tabs.length, 1);
 });
+
+test('importGroups refuses to replace saved tabs with an empty import', async () => {
+  seedGroup(['a', 'b']);
+  await assert.rejects(() => PinfoldStorage.importGroups([], 'replace'), /empty import/);
+  await assert.rejects(() => PinfoldStorage.importGroups([{ id: 'x', tabs: [] }], 'replace'), /empty import/);
+  assert.deepStrictEqual((await PinfoldStorage.getGroups())[0].tabs.map(t => t.id), ['t0', 't1'], 'saved tabs untouched');
+});

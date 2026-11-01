@@ -197,3 +197,19 @@ test('pre-release backups still import', () => {
   assert.strictEqual(res.totalTabs, 1);
   assert.strictEqual(res.groups[0].tabs[0].url, 'https://old.example');
 });
+
+test('imports with no valid tabs are rejected instead of returning an empty result', () => {
+  assert.throws(() => ExportImport.parseImport('hello world, no links here'), /No valid tabs/);
+  assert.throws(() => ExportImport.parseImport('javascript:alert(1)\ndata:text/html,hi'), /No valid tabs/);
+  assert.throws(() => ExportImport.parseImport(backup([{ title: 'G', tabs: [{ url: 'javascript:alert(1)' }] }])), /No valid tabs/);
+});
+
+test('a cut-off JSON backup is rejected, not read as text', () => {
+  const full = backup([{ title: 'G', tabs: [{ url: 'https://react.dev/blog', title: 'Blog' }, { url: 'https://a.example' }] }]);
+  const truncated = full.slice(0, full.indexOf('https://a.example'));
+  assert.throws(() => ExportImport.parseImport(truncated), /could not be read/);
+});
+
+test('JSON that is not a Pinfold backup is rejected', () => {
+  assert.throws(() => ExportImport.parseImport('{"bookmarks": ["https://example.com"]}'), /not a Pinfold backup/);
+});

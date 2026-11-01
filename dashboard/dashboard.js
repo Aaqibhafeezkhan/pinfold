@@ -478,19 +478,7 @@ function getFolderAndDescendantIds(folderId) {
 }
 
 function sortGroups(groups) {
-  groups.sort((a, b) => {
-    switch (state.sortBy) {
-      case 'oldest':
-        return (a.createdAt || 0) - (b.createdAt || 0);
-      case 'most_tabs':
-        return (b.tabs?.length || 0) - (a.tabs?.length || 0);
-      case 'title':
-        return (a.title || '').localeCompare(b.title || '');
-      case 'newest':
-      default:
-        return (b.createdAt || 0) - (a.createdAt || 0);
-    }
-  });
+  groups.sort((a, b) => compareGroups(a, b, state.sortBy));
 }
 
 // Favicons come from Chrome's local favicon cache (the "favicon" permission), never from

@@ -48,7 +48,8 @@ const srcFiles = [
   'options/options.css',
   'utils/storage.js',
   'utils/export_import.js',
-  'utils/icons.js'
+  'utils/icons.js',
+  'utils/groups.js'
 ];
 
 let foundLeak = false;

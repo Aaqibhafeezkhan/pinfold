@@ -1223,7 +1223,7 @@ function bindEventListeners() {
 
   window.addEventListener('keydown', (e) => {
     const typingInField = e.target.closest && e.target.closest('input, textarea, select, [contenteditable]');
-    if (((e.key === '/' && !typingInField) || (e.ctrlKey && e.key === 'k')) && document.activeElement !== searchInput) {
+    if (((e.key === '/' && !typingInField) || ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k')) && document.activeElement !== searchInput) {
       e.preventDefault();
       searchInput.focus();
     } else if (e.key === 'Escape') {

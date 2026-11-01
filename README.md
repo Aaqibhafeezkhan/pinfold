@@ -35,7 +35,7 @@ Works in Chrome, Edge, Brave and other Chromium-based browsers.
 **Dashboard**
 - Nested folders and subfolders in a sidebar tree.
 - List view and cards view.
-- Search across tab titles, URLs and domains (case-insensitive substring match). Press <kbd>/</kbd> or <kbd>Ctrl</kbd>+<kbd>K</kbd> to focus the search box.
+- Search across tab titles, URLs and domains (case-insensitive substring match). Press <kbd>/</kbd> or <kbd>Ctrl</kbd>/<kbd>Cmd</kbd>+<kbd>K</kbd> to focus the search box.
 - Drag and drop to reorder tabs within a group, move tabs between groups, and move groups into folders.
 - Star items to add them to the **Favorites** filter.
 - Lock items to prevent them from being deleted.
@@ -105,7 +105,7 @@ See [PRIVACY.md](PRIVACY.md) for the full privacy policy.
 | <kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>S</kbd> | <kbd>Command</kbd>+<kbd>Shift</kbd>+<kbd>S</kbd> | Save the current tab |
 | <kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>O</kbd> | <kbd>Command</kbd>+<kbd>Shift</kbd>+<kbd>O</kbd> | Open the dashboard |
 
-In the dashboard: <kbd>/</kbd> or <kbd>Ctrl</kbd>+<kbd>K</kbd> focuses search, <kbd>Esc</kbd> leaves the search box or closes the import/export dialog.
+In the dashboard: <kbd>/</kbd> or <kbd>Ctrl</kbd>/<kbd>Cmd</kbd>+<kbd>K</kbd> focuses search, <kbd>Esc</kbd> leaves the search box or closes the import/export dialog.
 
 The browser may not assign a suggested shortcut if another extension already uses it. You can change shortcuts at `chrome://extensions/shortcuts` (or `edge://extensions/shortcuts`).
 

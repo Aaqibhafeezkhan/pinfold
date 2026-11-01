@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- Ctrl/Cmd+K now focuses dashboard search on macOS as well as Windows/Linux, including with Caps Lock enabled.
+
 - The dashboard theme toggle switches immediately when the system uses dark mode.
 
 ## [1.0.1] - 2026-10-26

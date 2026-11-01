@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- The dashboard and Options page now follow OS theme changes live when System is selected.
 - Sorting by Group name now uses visible titles for individual saved tabs and compares names case-insensitively.
 - Restore All now removes only confirmed reopened tabs in one locked storage write when Keep on Restore is off; failed and locked tabs stay saved.
 - The dashboard theme toggle switches immediately when the system uses dark mode.

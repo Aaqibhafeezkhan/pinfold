@@ -4,7 +4,14 @@ document.addEventListener('DOMContentLoaded', async () => {
   await PinfoldStorage.migrateLegacyStorage();
   renderIcons();
   await loadAndBindSettings();
+  watchSystemTheme();
 });
+
+function watchSystemTheme() {
+  window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', () => {
+    if (currentSettings?.theme === 'system') applyTheme('system');
+  });
+}
 
 function renderIcons() {
   document.getElementById('optionsLogo').innerHTML = SVG_ICONS.logo;

@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   await PinfoldStorage.migrateLegacyStorage();
   renderStaticIcons();
   await loadSettingsAndApplyTheme();
+  watchSystemTheme();
   await refreshData();
   bindEventListeners();
   setupStorageListener();
@@ -33,6 +34,12 @@ async function loadSettingsAndApplyTheme() {
   state.viewMode = state.settings.viewMode || 'list';
   updateViewModeButtons();
   applyTheme(state.settings.theme);
+}
+
+function watchSystemTheme() {
+  window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', () => {
+    if (state.settings?.theme === 'system') applyTheme('system');
+  });
 }
 
 function updateViewModeButtons() {

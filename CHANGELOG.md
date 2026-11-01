@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- Sorting by Group name now uses visible titles for individual saved tabs and compares names case-insensitively.
+
 - The dashboard theme toggle switches immediately when the system uses dark mode.
 
 ## [1.0.1] - 2026-10-26
